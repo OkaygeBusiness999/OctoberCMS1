@@ -1,8 +1,8 @@
 <?php namespace AppLogger\Logger\Updates;
 
-use Schema;
 use October\Rain\Database\Updates\Migration;
-use October\Rain\Database\Schema\Blueprint;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateLogsTable extends Migration
 {

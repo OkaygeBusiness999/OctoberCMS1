@@ -6,16 +6,14 @@ use AppLogger\Logger\Models\Log;
 
 // Route to create a new log
 Route::post('/logs', function (Request $request) {
-    $validatedData = $request->validate([
-        'arrival_date' => 'required|date_format:Y-m-d H:i:s',
-        'user_name' => 'required|string',
-        'delay' => 'required|integer',
-    ]);
 
+    $validatedData = $request->only(['arrival_date', 'user_name', 'delay']);
+    
     $log = new Log();
     $log->arrival_date = $validatedData['arrival_date'];
     $log->user_name = $validatedData['user_name'];
     $log->delay = $validatedData['delay'];
+    
     $log->save();
 
     return response()->json(['success' => true, 'log' => $log]);
